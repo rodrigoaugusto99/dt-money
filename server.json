@@ -23,6 +23,14 @@
         "category": "Educação",
         "price": 1980,
         "createdAt": "2022-07-29T19:24:44.505Z"
+      },
+      {
+        "id": 4,
+        "description": "Sghow",
+        "type": "income",
+        "category": "oh",
+        "price": 1,
+        "createdAt": "2022-07-29T19:24:44.505Z"
       }
     ]
   }
