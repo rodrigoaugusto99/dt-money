@@ -1,13 +1,17 @@
-import { Header } from "../../components/Header";
-import { Summary } from "../../components/Summary";
-import { SearchForm } from "./components/SearchForm";
-import { PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
-import { useContext } from "react";
-import { TransactionsContext } from "../../contexts/TransactionsContext";
-import { dateFormatter, priceFormatter } from "../../utils/formatter";
+import { Header } from '../../components/Header'
+import { Summary } from '../../components/Summary'
+import { SearchForm } from './components/SearchForm'
+import {
+  PriceHighlight,
+  TransactionsContainer,
+  TransactionsTable,
+} from './styles'
+import { useContext } from 'react'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
 export function Transactions() {
-  /*colocar tudo dentro do TransactionsCOntainer, pois vamos fazer
+  /* colocar tudo dentro do TransactionsCOntainer, pois vamos fazer
   a mesma coisa que fizemos no header e summary, centralizar tudo. */
 
   const { transactions } = useContext(TransactionsContext)
@@ -18,10 +22,10 @@ export function Transactions() {
       <Summary />
 
       <TransactionsContainer>
-        <SearchForm/>
+        <SearchForm />
         <TransactionsTable>
           <tbody>
-          {transactions.map(transaction => {
+            {transactions.map((transaction) => {
               return (
                 <tr key={transaction.id}>
                   <td width="50%">{transaction.description}</td>
@@ -32,7 +36,9 @@ export function Transactions() {
                     </PriceHighlight>
                   </td>
                   <td>{transaction.category}</td>
-                  <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
+                  <td>
+                    {dateFormatter.format(new Date(transaction.createdAt))}
+                  </td>
                 </tr>
               )
             })}
@@ -40,5 +46,5 @@ export function Transactions() {
         </TransactionsTable>
       </TransactionsContainer>
     </div>
-  );
+  )
 }

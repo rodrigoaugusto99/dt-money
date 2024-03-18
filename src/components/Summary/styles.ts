@@ -1,5 +1,4 @@
-
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components'
 
 export const SummaryContainer = styled.section`
   width: 100%;
@@ -13,21 +12,20 @@ export const SummaryContainer = styled.section`
   //margin negativo p/ subir por cima do header
   //por isso colocamos um padding maior no bottom do Header
   margin-top: -5rem;
-`;
+`
 
-
-/*um card eh difernete, eh verde. entao vamos criar uma propriedade
+/* um card eh difernete, eh verde. entao vamos criar uma propriedade
 pra passar aqui dentro. */
 
-/*essa propriedade vai se chamar variant, vai receber apenas o green por 
+/* essa propriedade vai se chamar variant, vai receber apenas o green por 
 enquanto, e pode ser nula. se nao tiver, nao eh verde. */
 interface SummaryCardProps {
-  variant?: "green"
+  variant?: 'green'
 }
 // < > pra falar que esse SummaryCard pode receber essa propriedade
 export const SummaryCard = styled.div<SummaryCardProps>`
-//o quadrado de cada card
-  background: ${props => props.theme["gray-600"]};
+  //o quadrado de cada card
+  background: ${(props) => props.theme['gray-600']};
   border-radius: 6px;
   padding: 2rem;
   header {
@@ -35,7 +33,7 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     align-items: center;
     justify-content: space-between;
     //cor do texto do header
-    color: ${props => props.theme["gray-300"]};
+    color: ${(props) => props.theme['gray-300']};
   }
   strong {
     display: block;
@@ -46,8 +44,10 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   vamos ter acesso as propriedades do componente.
   se o props.variant for green, entao vamos usar o css, 
   importando do styled-components */
-  ${props => props.variant === "green" && css`
-  //ja temos a props ali em cima, entao taca direto
-    background: ${props.theme["green-700"]}
-  `}
-`;
+  ${(props) =>
+    props.variant === 'green' &&
+    css`
+      //ja temos a props ali em cima, entao taca direto
+      background: ${props.theme['green-700']};
+    `}
+`
