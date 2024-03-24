@@ -4,7 +4,9 @@ import { Controller, useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
+
+
 import {
   CloseButton,
   Content,
@@ -23,7 +25,17 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
-  const { createTransaction } = useContext(TransactionsContext)
+  
+  const createTransaction = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      //aqui fica so o que aqui precisa
+      /*mas mesmo assim vai renderizar, pois quando o Context atualiza la o estado, todo ele atualiza junto,
+      e esse createTransaction esta dentro do Context. */
+      return context.createTransaction
+    },
+  )
+
   const {
     control,
     register,

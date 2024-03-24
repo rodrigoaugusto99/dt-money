@@ -6,7 +6,7 @@ import {
   TransactionsContainer,
   TransactionsTable,
 } from './styles'
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
@@ -14,8 +14,9 @@ export function Transactions() {
   /* colocar tudo dentro do TransactionsCOntainer, pois vamos fazer
   a mesma coisa que fizemos no header e summary, centralizar tudo. */
 
-  const { transactions } = useContext(TransactionsContext)
-
+  const transactions = useContextSelector(TransactionsContext, (context) => {
+    return context.transactions
+  })
   return (
     <div>
       <Header />
